@@ -1,27 +1,29 @@
-# x1watch.sh - X1 Tachyon Validator Log Watcher
+x1watch.sh - X1 Tachyon Validator Log Watcher
 
-`x1watch.sh` is a Bash script designed to monitor the log file of an X1 Tachyon validator (or similar Solana-based validator) in real-time. It provides a slow-motion view of the log with color-coded highlights for key events, making it easier to track validator health, consensus activity, and potential issues.
+This script monitors an X1 Tachyon validator log in real-time with a slow-motion view (0.3s delay) and color-coded highlights for key events like errors, replays, and leader changes.
 
-## Features
+Features:
+- Tails the log file at $HOME/x1/log.txt by default or a custom path.
+- Highlights: Red (errors), Yellow (warnings, skips, tower), Green (sync, leader changes), Blue (replay, shreds, votes, ledger).
+- Portable across users with $HOME.
 
-- **Real-Time Monitoring:** Tails the log file with a configurable delay (default: 0.3 seconds) for readable output.
-- **Color Highlights:** Highlights critical events (e.g., errors, warnings) and operational states (e.g., replay, voting) in distinct colors:
-  - **Red:** Errors, delinquency
-  - **Yellow:** Warnings, skips, tower updates
-  - **Green:** Sync status, leader changes
-  - **Blue:** Replay, shreds, votes, ledger activity
-- **User Flexibility:** Works with any user’s home directory by default (`$HOME/x1/log.txt`) or accepts a custom log file path as an argument.
-- **Portable:** No hardcoded paths—runs seamlessly across different systems and users.
+Usage:
+1. Clone: git clone https://github.com/siatrial/x1watch.git
+2. Make executable: chmod +x x1watch.sh
+3. Run default: ./x1watch.sh
+4. Run custom: ./x1watch.sh /path/to/log.txt
 
-## Prerequisites
+Example Output:
+Watching /home/user/x1/log.txt in slow motion (delay: 0.3s). Press Ctrl+C to stop.
+REPLAY: [2025-03-09T10:55:42.529557101Z] new fork:57806117 (in blue)
+LEADER CHANGE: [2025-03-09T10:55:42.529207175Z] LEADER CHANGE at slot: 57806116 (in green)
 
-- **Bash:** Available on Linux/macOS (standard on most systems).
-- **X1 Tachyon Validator:** Assumes a log file is being generated (e.g., by a Solana-based validator).
-- **Permissions:** Ensure the script has execute permissions (`chmod +x x1watch.sh`) and read access to the log file.
+Customize:
+- Edit DELAY (e.g., DELAY=0.5) for speed.
+- Change DEFAULT_LOG_FILE for a different default path.
 
-## Installation
+Troubleshooting:
+- "Log file not found": Check path/permissions.
+- No colors: Ensure terminal supports ANSI.
 
-1. **Clone or Download:**
-   ```bash
-   git clone https://github.com/siatrial/x1watch/blob/main/x1watch.sh
-   cd x1watch
+Contributions welcome via issues/pull requests!
