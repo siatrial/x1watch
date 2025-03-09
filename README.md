@@ -23,5 +23,5 @@
 
 1. **Clone or Download:**
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
-   cd your-repo
+   git clone https://github.com/siatrial/x1watch/blob/main/x1watch.sh
+   cd x1watch
